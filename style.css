@@ -1,5 +1,8 @@
+/* PAGE */
+
 body {
   background-color: #000;
+  font-family: 'Montserrat', sans-serif;
 }
 
 #gif-wrapper {
@@ -8,16 +11,82 @@ body {
   padding: 80px 0;
 }
 
-.gif-list {
+/* GIF GRID */
+
+.gif-grid {
   column-count: 3;
   column-gap: 1em; 
 }
 
 .gif-frame {
-    display: inline-block;
-    margin: 0 0 1em;
-    width: 100%;
+  display: inline-block;
+  margin: 0 0 1em;
+  width: 100%;
+  position: relative;
 }
+
+.gif-frame img {
+  width: 100%;
+}
+
+.gif-frame .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background-color: #2AFD9C;
+  transition: all .25s linear;
+  -webkit-transition: all .25s linear;
+}
+
+.gif-frame:hover .overlay {
+  opacity: .6;
+}
+
+.gif-frame .share-wrap {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all .25s linear;
+  -webkit-transition: all .25s linear;
+}
+
+.share-wrap .caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  color: #fff;
+}
+
+.caption ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.caption ul li {
+  display: inline-block;
+  font-size: 1.8rem;
+  margin: 0 10px;
+}
+
+.gif-frame:hover .overlay  {
+  opacity: .7;
+}
+
+.gif-frame:hover .share-wrap {
+  opacity: 1;
+}
+
+/* SEARCH FORM */
 
 .search-form {
   height:100px;
@@ -26,6 +95,8 @@ body {
 .search-form input {
   background-color: #000;
   color: #fff;
+  font-family: 'Montserrat', sans-serif;
+
   border: none;
   font-size: 48px;
   line-height: 48px;
@@ -44,13 +115,16 @@ body {
   border-radius: 0;
   transition: all .25s linear;
   -webkit-transition: all .25s linear;
-  font-size: 36px;
+  font-size: 48px;
   line-height: 48px;
   color: #fff;
 }
 
 .search-form button:hover {
   background-color: #2AFD9C;
-
 }
+
+
+
+
 
