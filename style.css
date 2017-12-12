@@ -1,0 +1,56 @@
+body {
+  background-color: #000;
+}
+
+#gif-wrapper {
+  width: 80%;
+  margin: 0 auto;
+  padding: 80px 0;
+}
+
+.gif-list {
+  column-count: 3;
+  column-gap: 1em; 
+}
+
+.gif-frame {
+    display: inline-block;
+    margin: 0 0 1em;
+    width: 100%;
+}
+
+.search-form {
+  height:100px;
+  margin-bottom: 25px;
+}
+.search-form input {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  font-size: 48px;
+  line-height: 48px;
+  height: 100%;
+  width: 85%
+}
+
+.search-form input:focus {
+  outline: none;
+}
+.search-form button {
+  width: 15%;
+  height: 100%;
+  background-color: #6762FB;
+  border: none;
+  border-radius: 0;
+  transition: all .25s linear;
+  -webkit-transition: all .25s linear;
+  font-size: 36px;
+  line-height: 48px;
+  color: #fff;
+}
+
+.search-form button:hover {
+  background-color: #2AFD9C;
+
+}
+
