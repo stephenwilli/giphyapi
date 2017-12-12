@@ -20,6 +20,9 @@
     
     handleSubmit(event){
       event.preventDefault();
+      this.setState({
+        value: event.target.value
+      });
       console.log(this.state.value);
       this.props.onSearch(this.query.value);
     }
@@ -27,10 +30,12 @@
     render() {
       
       return(
-        <form className="search-form" onSubmit={this.handleSubmit}>
-          <input type="search" name="search" placeholder="Search GIFs..." ref={(input) => this.query = input} value={this.state.value} onChange={this.searchQuery}/>
-          <button type="submit" id="submit" className="search-button">GO</button>
-        </form>
+        <div>
+          <form className="search-form" onSubmit={this.handleSubmit}>
+            <input type="search" name="search" placeholder="Search GIFs..." ref={(input) => this.query = input} value={this.state.value} onChange={this.searchQuery}/>
+            <button type="submit" id="submit" className="search-button"><i className="fa fa-fw fa-search"></i></button>
+          </form>
+        </div>
       )
     
     }
@@ -65,18 +70,31 @@
 
   render() {
   
-    let gifList = [];
+    let gifGrid = [];
     this.state.gifs.forEach((image, index) => {
-      gifList.push(
-        <img className="gif-frame" key={index} src={image.images.fixed_width.webp} />
+      gifGrid.push(
+        <div key={index} className="gif-frame">
+          <div className="overlay"></div>
+          <div className="share-wrap">
+            <div className="caption">
+              <h3>Share</h3>
+              <ul>
+                <li><i className="fa fa-fw fa-external-link"></i></li>
+                <li><i className="fa fa-fw fa-facebook"></i></li>
+                <li><i className="fa fa-fw fa-twitter"></i></li>
+              </ul>
+            </div>
+          </div>
+          <img src={image.images.fixed_width.webp} />
+        </div>
       );
     });
     
     return(
       <div>
         <GifSearch onSearch={this.performSearch}/>
-        <div className="gif-list">
-          {gifList}
+        <div className="gif-grid">
+          {gifGrid}
         </div>
       </div>
     )
