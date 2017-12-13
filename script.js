@@ -85,7 +85,7 @@
               </ul>
             </div>
           </div>
-          <img src={image.images.fixed_width.webp} />
+          <img src={image.images.fixed_width.url} />
         </div>
       );
     });
