@@ -1,5 +1,20 @@
-'use strict';
-
+/*
+* GIPHY API GIF SEARCH ONE PAGE APP
+* STEPHEN WILLIAMS
+* http://github.com/stephenwilli
+* 
+*/
+  
+  'use strict';
+  
+  /*
+  * GifSearch Class 
+  * @prop this.state.value - holds the value of the entered search
+  * @prop handleSubmit - 
+  * @prop searchQuery - sets the this.state.value with the value input from the form
+  * @render - Returns a simple search form with one input and one button
+  */
+  
   class GifSearch extends React.Component {
     constructor(props) {
       super(props);
@@ -11,20 +26,17 @@
       this.handleSubmit = this.handleSubmit.bind(this);
       this.searchQuery = this.searchQuery.bind(this);
     }
+  
+    handleSubmit(event){
+      event.preventDefault();
+      console.log(this.state.value);
+      this.props.onSearch(this.query.value);
+    }
     
     searchQuery(event){
       this.setState({
         value: event.target.value
       });
-    }
-    
-    handleSubmit(event){
-      event.preventDefault();
-      this.setState({
-        value: event.target.value
-      });
-      console.log(this.state.value);
-      this.props.onSearch(this.query.value);
     }
     
     render() {
@@ -40,6 +52,16 @@
     
     }
   }
+  
+  /*
+  * GifDisplay class
+  * @prop this.state.gifs - holds an array of gifs 
+  * @prop performSearch - passes in the query from the form into the GiphyApi url 
+  *                       fetches that URL with 24 matches
+  *                       returns the data, parses into json and pushes that into the this.state.gifs array
+  * @render - turns each data from the array into a grid of gifs using the url of the source image
+  *           returns the GifSearch class above the grid of gifs
+  */          
   
   class GifDisplay extends React.Component {
     constructor(props) {
@@ -101,5 +123,7 @@
     
   }
 }
+
+// Render the GifDisplay class to the DOM elemenet ID# gif-wrapper
 
 ReactDOM.render(<GifDisplay />, document.getElementById('gif-wrapper'));
